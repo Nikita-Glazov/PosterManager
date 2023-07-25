@@ -8,22 +8,22 @@ public class PosterManageTest {
     PosterManager manager = new PosterManager(5);
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         manager.add("Film 1");
         manager.add("Film 2");
         manager.add("Film 3");
     }
 
     @Test
-    public void shouldAllPoster(){
+    public void shouldAllPoster() {
 
         String[] expected = {"Film 1", "Film 2", "Film 3"};
         String[] actual = manager.findAll();
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldPosterEqualDefaultLimit(){
+    public void shouldPosterEqualDefaultLimit() {
         PosterManager manager = new PosterManager();
 
         manager.add("Film 1");
@@ -37,39 +37,39 @@ public class PosterManageTest {
         manager.add("Film 9");
         manager.add("Film 10");
 
-        String[] expected = {"Film 10", "Film 9", "Film 8","Film 7", "Film 6", "Film 5","Film 4", "Film 3", "Film 2", "Film 1"};
+        String[] expected = {"Film 10", "Film 9", "Film 8", "Film 7", "Film 6", "Film 5", "Film 4", "Film 3", "Film 2", "Film 1"};
         String[] actual = manager.findLast();
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldPosterEqualLimit(){
+    public void shouldPosterEqualLimit() {
 
         manager.add("Film 4");
         manager.add("Film 5");
 
-        String[] expected = {"Film 5","Film 4", "Film 3", "Film 2", "Film 1"};
+        String[] expected = {"Film 5", "Film 4", "Film 3", "Film 2", "Film 1"};
         String[] actual = manager.findLast();
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldPosterBelowLimit(){
+    public void shouldPosterBelowLimit() {
 
         String[] expected = {"Film 3", "Film 2", "Film 1"};
         String[] actual = manager.findLast();
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
 
     }
 
     @Test
-    public void shouldPosterAboveLimit(){
+    public void shouldPosterAboveLimit() {
         manager.add("Film 4");
         manager.add("Film 5");
         manager.add("Film 6");
 
-        String[] expected = {"Film 6", "Film 5","Film 4", "Film 3", "Film 2"};
+        String[] expected = {"Film 6", "Film 5", "Film 4", "Film 3", "Film 2"};
         String[] actual = manager.findLast();
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 }
